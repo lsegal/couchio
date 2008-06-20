@@ -22,7 +22,7 @@ USAGE
 ### Accessing Databases & Documents ###
 
 In CouchIO, the `Dir` filesystem equivalent of a directory is a CouchDB database.
-The equivalent of a `File` is a CouchDB document _or_ a CouchDB attachment, depending
+The equivalent of a `File` is a CouchDB document *or* a CouchDB attachment, depending
 on how the data is written.
 
 The only difference between accessing files and directories and accessing documents and
