@@ -43,39 +43,39 @@ EXAMPLES
 
 List databases:
 
-  Dir.entries("couch://localhost:5984/") #=> ['todo', 'test']
+    Dir.entries("couch://localhost:5984/") #=> ['todo', 'test']
   
 List documents in a database:
 
-  Dir.entries("couch://localhost:5984/todo") #=> ['fix_car', 'wash_dishes', ...]
-  # - OR -
-  Dir.open("couch://localhost:5984/todo").each do |p|
-    puts p
-  end
+    Dir.entries("couch://localhost:5984/todo") #=> ['fix_car', 'wash_dishes', ...]
+    # - OR -
+    Dir.open("couch://localhost:5984/todo").each do |p|
+      puts p
+    end
   
 Open and read a document:
 
-  File.open("couch://localhost:5984/todo/fix_car").read 
-  #=> {'_id' => 'fix_car', 'text' => 'Need to fix car!', 'time' => 'June 20th 2008 10:55AM'}
-  # Same as: File.read("couch://localhost:5984/todo/fix_car")
+    File.open("couch://localhost:5984/todo/fix_car").read 
+    #=> {'_id' => 'fix_car', 'text' => 'Need to fix car!', 'time' => 'June 20th 2008 10:55AM'}
+    # Same as: File.read("couch://localhost:5984/todo/fix_car")
   
 Open a document for append-writing:
 
-  File.open("couch://localhost:5984/todo/fix_car", 'wa') do |f|
-    f.write 'text' => 'Need to fix car NOW!!!'
-  end
-  File.read("couch://localhost:5984/todo/fix_car")
-  #=> {'_id' => 'fix_car', 'text' => 'Need to fix car NOW!!!', 'time' => 'June 20th 2008 10:55AM'}
+    File.open("couch://localhost:5984/todo/fix_car", 'wa') do |f|
+      f.write 'text' => 'Need to fix car NOW!!!'
+    end
+    File.read("couch://localhost:5984/todo/fix_car")
+    #=> {'_id' => 'fix_car', 'text' => 'Need to fix car NOW!!!', 'time' => 'June 20th 2008 10:55AM'}
   
 Write an attachment (document must exist):
 
-  File.open("couch://localhost:5984/test/doc/foo.txt", 'w') do |f|
-    f.write "hello world"
-  end
+    File.open("couch://localhost:5984/test/doc/foo.txt", 'w') do |f|
+      f.write "hello world"
+    end
   
 Read an attachment:
 
-  File.read("couch://localhost:5984/test/doc/foo.txt") #=> "hello world"
+    File.read("couch://localhost:5984/test/doc/foo.txt") #=> "hello world"
   
   
 COPYRIGHT
