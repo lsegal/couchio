@@ -19,6 +19,8 @@ and attachments.
 USAGE
 -----
 
+### Accessing Databases & Documents ###
+
 In CouchIO, the `Dir` filesystem equivalent of a directory is a CouchDB database.
 The equivalent of a `File` is a CouchDB document _or_ a CouchDB attachment, depending
 on how the data is written.
@@ -27,12 +29,16 @@ The only difference between accessing files and directories and accessing docume
 databases is that you need to specify the full URI including the "couch://" scheme prefix,
 not "http://" (to differentiate from `open-uri` support).
 
+### Writing Documents & Attachments ###
+
 Like with writing to files, you need to use the 'a' append mode flag if you wish to append
 to the file. If you do not use this for a Couch resource, it will overwrite all of your contents.
 
 To write data to a document, your data **must** be a `Hash`. To write data to an _attachment_,
 your data must be a `String`. As you will see in the examples, writing a string will force
 the resource to be saved as an attachment while writing hash contents will save it as a document.
+
+### Note About Saving ###
 
 Saving is done when the file is closed. There is a `save` method that can be manually called, 
 however, to maintain filesystem independence, it should never be called.
@@ -44,6 +50,14 @@ EXAMPLES
 List databases:
 
     Dir.entries("couch://localhost:5984/") #=> ['todo', 'test']
+    
+Create a database:
+
+    Dir.mkdir("couch://localhost:5984/xyzzy")
+    
+Delete a database:
+
+    Dir.unlink("couch://localhost:5984/xyzzy")
   
 List documents in a database:
 
