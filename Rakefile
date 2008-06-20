@@ -8,7 +8,7 @@ SUDO = WINDOWS ? '' : 'sudo'
 
 task :default => :specs
 
-load 'yard.gemspec'
+load 'couchio.gemspec'
 Rake::GemPackageTask.new(SPEC) do |pkg|
   pkg.gem_spec = SPEC
   pkg.need_zip = true
