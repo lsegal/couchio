@@ -19,7 +19,7 @@ class CouchIO
   def close; end
   
   def read
-    OpenHashStruct.new(read_json)
+    read_json
   end
   
   private
@@ -27,7 +27,12 @@ class CouchIO
   def read_json(extra = nil)
     uri  = extra ? File.join(path, extra) : path
     data = Net::HTTP.get(URI.parse(uri))
-    JSON.parse(data)
+    
+    if data[0,1] =~ /[\[\{]/
+      JSON.parse(data)
+    else
+      data
+    end
   rescue JSON::ParserError
     data
   end

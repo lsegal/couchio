@@ -67,7 +67,6 @@ class CouchDocument < CouchIO
     uri = URI.parse(path)
     Net::HTTP.start(uri.host, uri.port) do |http|
       @local_copy.update('_id' => File.basename(path))
-      p @local_copy
       result = http.send_request('PUT', uri.path, @local_copy.to_json)
       json = JSON.parse(result.body)
       verify_ok(json)
