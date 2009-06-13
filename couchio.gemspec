@@ -9,7 +9,7 @@ SPEC = Gem::Specification.new do |s|
   s.summary       = "Virtual filesystem support for a CouchDB database." 
   s.files         = Dir.glob("{lib}/**/*") + ['LICENSE', 'README.markdown', 'Rakefile']
   s.require_paths = ['lib']
-  s.has_rdoc      = false
-  #s.rubyforge_project = 'couchio'
+  s.has_rdoc      = 'yard'
+  s.rubyforge_project = 'couchio'
   s.add_dependency 'json'
 end
