@@ -2,6 +2,7 @@ require 'rubygems'
 require 'rake/gempackagetask'
 require 'spec'
 require 'spec/rake/spectask'
+require 'yard'
 
 WINDOWS = (PLATFORM =~ /win32|cygwin/ ? true : false) rescue false
 SUDO = WINDOWS ? '' : 'sudo'
